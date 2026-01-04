@@ -1,0 +1,127 @@
+:root {
+    --primary: #4f46e5;
+    --secondary: #16a34a;
+    --dark: #0f172a;
+    --muted: #64748b;
+    --bg: #f1f5f9;
+    --card: rgba(255,255,255,0.96);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, sans-serif;
+    background:
+        radial-gradient(circle at top left, #e0e7ff, transparent 40%),
+        radial-gradient(circle at bottom right, #dcfce7, transparent 40%),
+        var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    position: relative;
+    background: var(--card);
+    padding: 3rem;
+    border-radius: 26px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    color: var(--dark);
+}
+
+.subtitle {
+    margin: 0.5rem 0 2rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+input {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    border: 2px solid #e5e7eb;
+    font-size: 1rem;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 18px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--secondary), #22c55e);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+}
+
+.hint {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: #e5e7eb;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* DARK MODE */
+body.dark {
+    background:
+        radial-gradient(circle at top left, #1e293b, transparent 40%),
+        radial-gradient(circle at bottom right, #020617, transparent 40%),
+        #020617;
+}
+
+body.dark .login-card {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+body.dark h1 {
+    color: #f8fafc;
+}
+
+body.dark .subtitle,
+body.dark .hint {
+    color: #94a3b8;
+}
+
+body.dark input {
+    background: #020617;
+    color: #e5e7eb;
+    border-color: #334155;
+}
+
+body.dark .theme-toggle {
+    background: #334155;
+    color: #f8fafc;
+}

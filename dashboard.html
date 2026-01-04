@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Educulture | Task Designer</title>
+</head>
+<body>
+    <div class="card">
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+        <h1>Educulture</h1>
+        <p>Select classes and define your lesson topic</p>
+        
+        <div class="class-grid">
+            <button class="class-btn" onclick="toggleClass(this, 1)">1</button>
+            <button class="class-btn" onclick="toggleClass(this, 2)">2</button>
+            <button class="class-btn" onclick="toggleClass(this, 3)">3</button>
+            <button class="class-btn" onclick="toggleClass(this, 4)">4</button>
+            <button class="class-btn" onclick="toggleClass(this, 5)">5</button>
+            <button class="class-btn" onclick="toggleClass(this, 6)">6</button>
+            <button class="class-btn" onclick="toggleClass(this, 7)">7</button>
+            <button class="class-btn" onclick="toggleClass(this, 8)">8</button>
+            <button class="class-btn" onclick="toggleClass(this, 9)">9</button>
+            <button class="class-btn" onclick="toggleClass(this, 10)">10</button>
+        </div>
+
+        <input type="text" id="topicInput" placeholder="Enter topic (e.g., Water,Plants,Our country India)">
+        
+        <button class="gen-btn" onclick="generateTask()">GENERATE NCERT ACTIVITY</button>
+
+        <div id="loadingSection" class="hidden">
+    <div class="loading-text">
+        Preparing NCERT-aligned activities…
+    </div>
+    <div class="loader-bar">
+        <div class="loader-progress"></div>
+    </div>
+</div>
+
+
+        <div id="resultSection" class="hidden">
+            <div class="result-box" id="resContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
