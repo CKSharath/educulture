@@ -9,11 +9,74 @@ function toggleClass(btn, num) {
 
 /* NCERT-aligned Dummy Topic Database */
 const ncertTopics = {
-    "family": {
-        1: "Draw your family members and write their names.",
-        2: "Create a family tree using drawings or photos.",
-        3: "Write 5 sentences about the roles of family members."
+    "energy": {
+    2: {
+        title: "Finding Energy at Home",
+        subTopic: "Things that work using energy",
+        assignmentTitle: "Energy Spotter Game",
+        questions: [
+            "Find and list 5 things at home that need energy to work (fan, bulb, phone, TV, mixer).",
+            "Choose any one object from the list and draw it or paste its picture.",
+            "Answer in one line: What happens if energy is not available for this object?"
+        ],
+        learning: [
+            "Basic idea of energy",
+            "Observation skills",
+            "Linking objects to functionality"
+        ]
     },
+
+    4: {
+        title: "Sources of Energy",
+        subTopic: "Where does energy come from?",
+        assignmentTitle: "Energy Sorting Challenge",
+        questions: [
+            "List any 6 different sources of energy.",
+            "Divide the sources into two groups: Natural (sun, wind, water) and Man-made (battery, electricity).",
+            "Color-code the groups or draw simple symbols to represent each source."
+        ],
+        learning: [
+            "Classification skills",
+            "Difference between natural and man-made sources",
+            "Foundation understanding of renewable energy"
+        ]
+    },
+
+    6: {
+        title: "Energy Transformation",
+        subTopic: "One form of energy changing into another",
+        assignmentTitle: "Energy Journey Tracker",
+        questions: [
+            "Pick one device (fan, torch, or bicycle).",
+            "Identify and write the input energy used by the device.",
+            "Identify and write the output energy produced.",
+            "Show the transformation using arrows (example: Electrical → Mechanical)."
+        ],
+        learning: [
+            "Energy transformation",
+            "Cause–effect relationships",
+            "Conceptual clarity without formulas"
+        ]
+    },
+
+    8: {
+        title: "Renewable vs Non-Renewable Energy",
+        subTopic: "Sustainable energy for the future",
+        assignmentTitle: "Design a Future School",
+        questions: [
+            "Imagine a school that uses only renewable energy sources.",
+            "List the energy sources you will use (solar, wind, water, etc.).",
+            "Explain why these sources are better than non-renewable energy.",
+            "Present your idea as a diagram, short paragraph, or bullet-point plan."
+        ],
+        learning: [
+            "Sustainability concepts",
+            "Decision-making skills",
+            "Environmental responsibility"
+        ]
+    }
+},
+
 
     "plants": {
         1: "Identify and draw any two plants near your home.",
@@ -24,12 +87,76 @@ const ncertTopics = {
     },
 
     "water": {
-        1: "List three daily uses of water.",
-        2: "Draw different sources of water.",
-        3: "Differentiate between clean and dirty water.",
-        4: "Explain the water cycle with a neat diagram.",
-        6: "Describe methods of conserving water."
+    2: {
+        title: "Discovering Water Around Me",
+        subTopic: "Where do we see water in our daily life?",
+        assignmentTitle: "Water Detective at Home",
+        questions: [
+            "List 5 places where you used water in one day.",
+            "Draw any one scene where water is used (brushing, bathing, cooking, watering plants).",
+            "Circle and explain what happens if water is not available in that scene."
+        ],
+        learning: [
+            "Importance of water",
+            "Observation skills",
+            "Basic cause–effect thinking"
+        ]
     },
+
+    3: {
+        title: "Water Uses & Conservation",
+        subTopic: "How water helps us and how we waste it",
+        assignmentTitle: "Save the Water Mission",
+        questions: [
+            "Identify 3 ways water is wasted at home or school.",
+            "Suggest 1 simple solution for each wastage.",
+            "Create a small poster or slogan such as “Every Drop Counts!”"
+        ],
+        learning: [
+            "Responsible usage",
+            "Environmental awareness",
+            "Expression and creativity"
+        ]
+    },
+
+    4: {
+        title: "Water Cycle & Real-Life Impact",
+        subTopic: "Water cycle and its effect on rainfall",
+        assignmentTitle: "Explain Today’s Rain",
+        questions: [
+            "Observe today’s weather conditions.",
+            "Draw a simple water cycle diagram.",
+            "Write 5 lines explaining evaporation → clouds → rain."
+        ],
+        learning: [
+            "Scientific processes",
+            "Linking theory to real life",
+            "Logical explanation skills"
+        ]
+    },
+
+    5: {
+        title: "Water Scarcity & Sustainable Management",
+        subTopic: "Water scarcity and conservation methods",
+        assignmentTitle: "Mini Research: Water Crisis",
+        questions: [
+            "Choose one Indian city or village facing water scarcity.",
+            "Why did the water problem occur?",
+            "Suggest any 2 possible solutions."
+        ],
+        presentation: [
+            "Short report",
+            "3-slide PPT",
+            "One-page write-up"
+        ],
+        learning: [
+            "Analytical thinking",
+            "Social responsibility",
+            "Research & presentation skills"
+        ]
+    }
+},
+
 
     "our country india": {
         3: "Identify national symbols of India.",
@@ -74,21 +201,50 @@ function generateTask() {
         let output = `<h4>Lesson Topic: ${topicInput.value}</h4>`;
 
         Array.from(selectedClasses)
-            .sort((a, b) => a - b)
-            .forEach(cls => {
-                const activity =
-                    ncertTopics[topic]?.[cls] ||
-                    `<span style="color:#b91c1c; font-style:italic;">
-                        This topic is not included in NCERT syllabus for Class ${cls}.
-                     </span>`;
+    .sort((a, b) => a - b)
+    .forEach(cls => {
 
-                output += `
-                    <div class="result-item">
-                        <strong>Class ${cls}</strong><br>
-                        ${activity}
-                    </div>
-                `;
-            });
+        const data = ncertTopics[topic]?.[cls];
+
+        if (!data) {
+            output += `
+                <div class="result-item">
+                    <strong>Class ${cls}</strong><br>
+                    <span class="not-available">
+                        This topic is not included in NCERT syllabus for Class ${cls}.
+                    </span>
+                </div>
+            `;
+            return;
+        }
+
+        output += `
+            <div class="result-item">
+                <strong>Grade ${cls} – ${data.title}</strong><br><br>
+
+                <em><b>Sub-topic:</b> ${data.subTopic}</em><br><br>
+
+                <b>Assignment:</b> "${data.assignmentTitle}"<br><br>
+
+                <ul>
+                    ${data.questions.map(q => `<li>${q}</li>`).join("")}
+                </ul>
+
+                ${
+                    data.presentation
+                        ? `<b>Present as:</b>
+                           <ul>${data.presentation.map(p => `<li>${p}</li>`).join("")}</ul>`
+                        : ""
+                }
+
+                <b>What the student learns:</b>
+                <ul>
+                    ${data.learning.map(l => `<li>${l}</li>`).join("")}
+                </ul>
+            </div>
+        `;
+    });
+
 
         content.innerHTML = output;
         result.classList.remove('hidden');
